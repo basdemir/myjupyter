@@ -22,6 +22,7 @@ pipenv lock
 ```
 pip install dask jupyterlab
 pip install dask_labextension
+pip install s3fs
 jupyter labextension install dask-labextension
 jupyter serverextension enable dask_labextension
 jupyter labextension install @jupyter-widgets/jupyterlab-manager
@@ -30,4 +31,12 @@ pip install numpy pandas h5py scikit-image
 pip install --upgrade jupyterlab-git
 jupyter lab build
 jupyter serverextension enable --py jupyterlab_git
+```
+
+## To Install minio
+```
+k create ns minio
+kubens minio
+helm repo add minio https://helm.min.io/
+helm install minio minio/minio --set service.type=NodePort,accessKey=abcdefgh,secretKey=abcdefgh
 ```
