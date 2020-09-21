@@ -9,7 +9,7 @@ git config user.name "Serkan Basdemir"
 
 ```
 sudo apt install graphviz python3-pip -y
-pip install pipenv
+pip install pipenv pyarrow graphviz
 pipenv --python 3.8
 pipenv shell
 pipenv install flask==0.12.1
@@ -27,6 +27,11 @@ jupyter labextension install dask-labextension
 jupyter serverextension enable dask_labextension
 jupyter labextension install @jupyter-widgets/jupyterlab-manager
 jupyter labextension install @bokeh/jupyter_bokeh
+
+jupyter labextension install @ryantam626/jupyterlab_code_formatter
+pip install jupyterlab_code_formatter isort
+
+jupyter serverextension enable --py jupyterlab_code_formatter
 pip install numpy pandas h5py scikit-image
 pip install --upgrade jupyterlab-git
 jupyter lab build
