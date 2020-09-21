@@ -33,10 +33,19 @@ jupyter lab build
 jupyter serverextension enable --py jupyterlab_git
 ```
 
-## To Install minio
+## To Install minio on k8s
 ```
 k create ns minio
 kubens minio
 helm repo add minio https://helm.min.io/
 helm install minio minio/minio --set service.type=NodePort,accessKey=abcdefgh,secretKey=abcdefgh
 ```
+
+## To Install minio on docker
+
+docker run -d -p 9000:9000 \
+  --name minio-server \
+  -v /mnt/data:/data \
+  -e "MINIO_ACCESS_KEY=abcdefgh" \
+  -e "MINIO_SECRET_KEY=abcdefgh" \
+  minio/minio server /data
